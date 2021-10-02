@@ -8,5 +8,7 @@ import javax.inject.Singleton
 class PokemonDetailsRepo @Inject constructor(
     private val pokemonDetailsService: PokemonDetailsService
 ) {
-    // TODO NETWORKING: Implement the getPokemonDetails(id) method
+    // Implement the getPokemonDetails(id) method
+    suspend fun getPokemonDetails(id: String) =
+        pokemonDetailsService.getPokemonDetails(id)
 }

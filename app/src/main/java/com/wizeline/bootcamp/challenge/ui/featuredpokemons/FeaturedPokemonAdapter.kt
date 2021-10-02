@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.wizeline.bootcamp.challenge.databinding.ItemFeaturedPokemonBinding
 import com.wizeline.bootcamp.challenge.domain.Pokemon
 
@@ -30,8 +31,15 @@ class FeaturedPokemonAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(pokemon: Pokemon) {
-            // TODO UI: Bind the Pokemon to your layout!
+            // Bind the Pokemon to your layout!
+            binding.textViewId.text = pokemon.id.toString()
+            binding.textViewName.text = pokemon.name
+            Glide.with(binding.root).load(pokemon.spriteUrl).into(binding.imageViewSprite)
             // Don't forget to set up the OnClickListener :)
+            binding.root.setOnClickListener()
+            {
+                onPokemonClicked.invoke(pokemon.id)
+            }
         }
     }
 

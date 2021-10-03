@@ -8,5 +8,5 @@ import retrofit2.http.Path
 interface PokemonDetailsService {
     // Define your method to the the 'pokemon/{id}' endpoint
     @GET("pokemon/{id}")
-    suspend fun getPokemonDetails(@Path("id") id: String) : Response<PokemonDetails>
+    suspend fun getPokemonDetails(@Path("id") id: Long) : Response<PokemonDetails>
 }

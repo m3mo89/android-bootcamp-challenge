@@ -9,6 +9,6 @@ class PokemonDetailsRepo @Inject constructor(
     private val pokemonDetailsService: PokemonDetailsService
 ) {
     // Implement the getPokemonDetails(id) method
-    suspend fun getPokemonDetails(id: String) =
+    suspend fun getPokemonDetails(id: Long) =
         pokemonDetailsService.getPokemonDetails(id)
 }

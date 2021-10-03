@@ -13,7 +13,7 @@ class PokemonDetailsViewModel @Inject constructor(
 ) : ViewModel() {
 
     // Implement a function that communicates with the PokemonDetailsRepo to get the needed info.
-    private val _id = MutableLiveData<String>()
+    private val _id = MutableLiveData<Long>()
 
     private val _pokemon = _id.switchMap { id ->
         liveData(Dispatchers.IO)
@@ -27,7 +27,7 @@ class PokemonDetailsViewModel @Inject constructor(
 
     val pokemon : LiveData<PokemonDetails> = _pokemon
 
-    fun init(id: String){
+    fun init(id: Long){
         _id.value = id
     }
 }

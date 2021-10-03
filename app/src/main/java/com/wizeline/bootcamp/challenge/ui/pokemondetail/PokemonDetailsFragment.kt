@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.wizeline.bootcamp.challenge.data.mock.PokemonDetails
 import com.wizeline.bootcamp.challenge.databinding.FragmentPokemonDetailsBinding
@@ -33,7 +34,12 @@ class PokemonDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val pokemonId = requireArguments().getLong("pokemon_id")
-        // TODO DESIGN PATTERNS: make your call to your view model here
+        // make your call to your view model here
+        viewModel.init(pokemonId)
+
+        viewModel.pokemon.observe(viewLifecycleOwner, Observer{
+            arrangePokemonDetails(it!!)
+        })
     }
 
     // Tip: use this function to set up the data in the fragment views
